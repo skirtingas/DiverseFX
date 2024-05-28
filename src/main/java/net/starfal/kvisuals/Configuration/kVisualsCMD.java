@@ -1,5 +1,6 @@
 package net.starfal.kvisuals.Configuration;
 
+import net.starfal.kvisuals.Functions.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -12,18 +13,35 @@ public class kVisualsCMD implements TabExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String s, @NotNull String[] args) {
         if (cmd.getName().equalsIgnoreCase("kvisuals")) {
-            if (args[0].equalsIgnoreCase("reload")) {
-                if (sender.hasPermission(ConfigManager.getConfig().getString("Permissions.General.Admin"))){
+            var conf = ConfigManager.getConfig();
+            String lang = conf.getString("General.Language");
+            var msg = ConfigManager.getMessages(lang);
+            String prefix = msg.getString("General.Prefix");
+            if (sender.hasPermission(conf.getString("Permissions.General.Admin"))) {
+                if (args[0].equalsIgnoreCase("reload")){
                     ConfigManager.reloadConfig();
-                    sender.sendMessage("Config reloaded");
+                    String message = msg.getString("General.Reloaded");
+                    message = message.replace("%prefix%", prefix);
+                    sender.sendMessage(Color.format(message));
+                }else {
+                    String message = msg.getString("General.Errors.Wrong_Usage_AdminCMD");
+                    message = message.replace("%prefix%", prefix);
+                    sender.sendMessage(Color.format(message));
                 }
+            }else{
+                String message = msg.getString("General.Errors.No_Permission");
+                message = message.replace("%prefix%", prefix);
+                sender.sendMessage(Color.format(message));
             }
         }
         return true;
     }
 
     @Override
-    public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        return List.of();
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String s, @NotNull String[] args) {
+        if (cmd.getName().equalsIgnoreCase("kvisuals")){
+            return List.of("reload");
+        }
+        return null;
     }
 }

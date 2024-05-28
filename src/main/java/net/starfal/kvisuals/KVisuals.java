@@ -6,6 +6,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.starfal.kvisuals.Configuration.ConfigManager;
 import net.starfal.kvisuals.Configuration.DefaultConfig;
+import net.starfal.kvisuals.Configuration.kVisualsCMD;
 import net.starfal.kvisuals.Functions.Color;
 import net.starfal.kvisuals.OraxenFileSetup.DefaultFile;
 import net.starfal.kvisuals.OraxenFileSetup.FileSetup;
@@ -39,9 +40,9 @@ public final class KVisuals extends JavaPlugin {
                 case "en":
                     getLogger().severe(Color.format("<gradient:dark_purple:#8e04dd>kVisuals</gradient> <red>- <u>Oraxen</u> is required for <u>kVisuals</u> to work. Disabling plugin."));
                     break;
-                case "lt":
-                    getLogger().severe(Color.format("<gradient:dark_purple:#8e04dd>kVisuals</gradient> <red>- <u>Oraxen</u> reikalingas, kad <u>kVisuals</u> veiktų. Plugin išjungiamas."));
-                    break;
+                //case "lt":
+                //    getLogger().severe(Color.format("<gradient:dark_purple:#8e04dd>kVisuals</gradient> <red>- <u>Oraxen</u> reikalingas, kad <u>kVisuals</u> veiktų. Plugin išjungiamas."));
+                //    break;
             }
             pluginManager.disablePlugin(this);
             return;
@@ -70,19 +71,45 @@ public final class KVisuals extends JavaPlugin {
     public void setupCommands() {
         this.getCommand("visual").setExecutor(new ShowVisual(this));
         this.getCommand("visual").setTabCompleter(new ShowVisual(this));
+        this.getCommand("kvisuals").setExecutor(new kVisualsCMD());
+        this.getCommand("kvisuals").setTabCompleter(new kVisualsCMD());
     }
     public void enableMessages() {
         String enabled = "<green>(Eɴᴀʙʟᴇᴅ)</green>";
         String disabled = "<red>(Dɪsᴀʙʟᴇᴅ)</red>";
         log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray> <#0ffcb9><b><u>Eɴᴀʙʟᴇᴅ</u></b></#0ffcb9>");
         log("<gradient:#d3b013:#e2d185><i>Vɪsᴜᴀʟs Lɪsᴛ:</i></gradient>");
-        log("<gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + enabled);
-        log("<gradient:#0b9384:#13f4da>Tʀᴀɴsᴘᴀʀᴇɴᴛ</gradient>" + enabled);
+        if (ConfigManager.getConfig().getBoolean("General.Visuals.Fullscreen")) {
+            log("<gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + enabled);
+        } else {
+            log("<gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + disabled);
+        }
+        if (ConfigManager.getConfig().getBoolean("General.Visuals.Transparent")) {
+            log("<gradient:#0b9384:#13f4da>Tʀᴀɴsᴘᴀʀᴇɴᴛ</gradient>" + enabled);
+        } else {
+            log("<gradient:#0b9384:#13f4da>Tʀᴀɴsᴘᴀʀᴇɴᴛ</gradient>" + disabled);
+        }
         log("<gradient:#ff0000:#bc13f4>Gʀᴀᴅɪᴇɴᴛs:</gradient>");
-        log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + enabled);
-        log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ</gradient>" + enabled);
-        log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Bᴏᴛᴛᴏᴍ</gradient>" + enabled);
-        log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ & Bᴏᴛᴛᴏᴍ</gradient>" + enabled);
+        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.Fullscreen")) {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + enabled);
+        } else {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + disabled);
+        }
+        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.Top")) {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ</gradient>" + enabled);
+        } else {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ</gradient>" + disabled);
+        }
+        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.Bottom")) {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Bᴏᴛᴛᴏᴍ</gradient>" + enabled);
+        } else {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Bᴏᴛᴛᴏᴍ</gradient>" + disabled);
+        }
+        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.TopAndBottom")) {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ & Bᴏᴛᴛᴏᴍ</gradient>" + enabled);
+        } else {
+            log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ & Bᴏᴛᴛᴏᴍ</gradient>" + disabled);
+        }
         log("<gold>Mᴀᴅᴇ ʙʏ</gold> <gradient:#dba736:#bae285>ᴋɪᴛᴏxɪs</gradient>");
 
     }

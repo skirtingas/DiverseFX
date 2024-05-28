@@ -20,7 +20,7 @@ public class ConfigManager {
     public static void setupConfig() {
         configFile = new File(Bukkit.getServer().getPluginManager().getPlugin("kVisuals").getDataFolder(), "config.yml");
         enMSGFile = new File(Bukkit.getServer().getPluginManager().getPlugin("kVisuals").getDataFolder(), "languages/en.yml");
-        ltMSGFile = new File(Bukkit.getServer().getPluginManager().getPlugin("kVisuals").getDataFolder(), "languages/lt.yml");
+        // ltMSGFile = new File(Bukkit.getServer().getPluginManager().getPlugin("kVisuals").getDataFolder(), "languages/lt.yml");
 
         if (!configFile.exists()) {
             try {
@@ -38,7 +38,7 @@ public class ConfigManager {
         }
         config = YamlConfiguration.loadConfiguration(configFile);
         enMSG = YamlConfiguration.loadConfiguration(enMSGFile);
-        ltMSG = YamlConfiguration.loadConfiguration(ltMSGFile);
+        // ltMSG = YamlConfiguration.loadConfiguration(ltMSGFile);
 
     }
 
@@ -49,8 +49,8 @@ public class ConfigManager {
         switch (lang) {
             case "en":
                 return enMSG;
-            case "lt":
-                return ltMSG;
+            //case "lt":
+            //    return ltMSG;
         }
         return enMSG;
     }
@@ -68,9 +68,9 @@ public class ConfigManager {
                 case "en":
                     enMSG.save(enMSGFile);
                     break;
-                case "lt":
-                    ltMSG.save(ltMSGFile);
-                    break;
+                //case "lt":
+                //    ltMSG.save(ltMSGFile);
+                //    break;
             }
         } catch (IOException e) {
             System.out.println("Could not save the messages file");
@@ -80,7 +80,7 @@ public class ConfigManager {
     public static void reloadConfig() {
         config = YamlConfiguration.loadConfiguration(configFile);
         enMSG = YamlConfiguration.loadConfiguration(enMSGFile);
-        ltMSG = YamlConfiguration.loadConfiguration(ltMSGFile);
+        //ltMSG = YamlConfiguration.loadConfiguration(ltMSGFile);
     }
 
 }

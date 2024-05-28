@@ -1,9 +1,16 @@
 name: kVisuals
 version: '${version}'
 main: net.starfal.kvisuals.KVisuals
-api-version: '1.20'
+api-version: '1.20.6'
+author: kitoxis
+description: A plugin that allows you to show custom visuals using a Oraxen.
+website: https://docs.starfal.net
 depend:
   - Oraxen
 commands:
   visual:
     description: Shows a custom visual using a resourcepack.
+    permission: kvisuals.visual
+  kvisuals:
+    description: Admin command for kVisuals.
+    permission: kvisuals.admin
