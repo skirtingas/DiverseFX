@@ -1,0 +1,9 @@
+name: kVisuals
+version: '${version}'
+main: net.starfal.kvisuals.KVisuals
+api-version: '1.20'
+depend:
+  - Oraxen
+commands:
+  visual:
+    description: Shows a custom visual using a resourcepack.
