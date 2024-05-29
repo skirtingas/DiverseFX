@@ -18,11 +18,17 @@ public class kVisualsCMD implements TabExecutor {
             var msg = ConfigManager.getMessages(lang);
             String prefix = msg.getString("General.Prefix");
             if (sender.hasPermission(conf.getString("Permissions.General.Admin"))) {
-                if (args[0].equalsIgnoreCase("reload")){
-                    ConfigManager.reloadConfig();
-                    String message = msg.getString("General.Reloaded");
-                    message = message.replace("%prefix%", prefix);
-                    sender.sendMessage(Color.format(message));
+                if (!(args.length == 0)){
+                    if (args[0].equalsIgnoreCase("reload")){
+                        ConfigManager.reloadConfig();
+                        String message = msg.getString("General.Reloaded");
+                        message = message.replace("%prefix%", prefix);
+                        sender.sendMessage(Color.format(message));
+                    }else {
+                        String message = msg.getString("General.Errors.Wrong_Usage_AdminCMD");
+                        message = message.replace("%prefix%", prefix);
+                        sender.sendMessage(Color.format(message));
+                    }
                 }else {
                     String message = msg.getString("General.Errors.Wrong_Usage_AdminCMD");
                     message = message.replace("%prefix%", prefix);

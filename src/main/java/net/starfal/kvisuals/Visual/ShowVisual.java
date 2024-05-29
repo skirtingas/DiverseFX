@@ -32,112 +32,149 @@ public class ShowVisual implements TabExecutor {
                 message = message.replace("%prefix%", msg.getString("General.Prefix"));
                 sender.sendMessage(Color.format(message));
             }else {
-                if (args[0].equalsIgnoreCase("gradient")){
-                    if (args[1].equalsIgnoreCase("fullscreen")){
-                        if (args.length == 5){
-                            Player player = Bukkit.getPlayer(args[2]);
-                            if (player != null){
-                                if (conf.getBoolean("General.Visuals.Gradients.Fullscreen")){
-                                    VisualsFunction.showFullScreenGradientVisual(player, args[3], "<" + args[4] + ">");
-                                    String message = msg.getString("General.Visual_Was_Sent.With_Title");
-                                    message = message.replace("%visualtype%", "Fullscreen Gradient");
-                                    message = message.replace("%target%", player.getName());
+                if (args.length == 0){
+                    sender.sendMessage(Color.format("<red>Wrong Usage!"));
+                }else {
+                    if (args[0].equalsIgnoreCase("gradient")){
+                        if (args.length == 1){
+                            sender.sendMessage(Color.format("<red>Wrong Usage!"));
+                        }else {
+                            if (args[1].equalsIgnoreCase("fullscreen")) {
+                                if (args.length == 5) {
+                                    Player player = Bukkit.getPlayer(args[2]);
+                                    if (player != null) {
+                                        if (conf.getBoolean("General.Visuals.Gradients.Fullscreen")) {
+                                            VisualsFunction.showFullScreenGradientVisual(player, args[3], "<" + args[4] + ">", 500, 1760, 500);
+                                            String message = msg.getString("General.Visual_Was_Sent.With_Title");
+                                            message = message.replace("%visualtype%", "Fullscreen Gradient");
+                                            message = message.replace("%target%", player.getName());
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%text%", args[3]);
+                                            sender.sendMessage(Color.format(message));
+                                        } else {
+                                            String message = msg.getString("General.Errors.Visual_IsDisabled");
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%type%", "Fullscreen Gradient");
+                                            sender.sendMessage(Color.format(message));
+                                        }
+                                    } else {
+                                        String message = msg.getString("General.Errors.Player_Not_Found");
+                                        message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                        sender.sendMessage(Color.format(message));
+                                    }
+                                } else {
+                                    String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                    message = message.replace("%text%", args[3]);
-                                    sender.sendMessage(Color.format(message));
-                                }else {
-                                    String message = msg.getString("General.Errors.Visual_IsDisabled");
-                                    message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                    message = message.replace("%type%", "Fullscreen Gradient");
                                     sender.sendMessage(Color.format(message));
                                 }
-                            }else {
-                                String message = msg.getString("General.Errors.Player_Not_Found");
-                                message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                sender.sendMessage(Color.format(message));
-                            }
-                        }else {
-                            String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title");
-                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                            sender.sendMessage(Color.format(message));
-                        }
-                    }else if (args[1].equalsIgnoreCase("bottom")){
-                        if (args.length == 6){
-                            Player player = Bukkit.getPlayer(args[2]);
-                            if (player != null){
-                                if (conf.getBoolean("General.Visuals.Gradients.Bottom")){
-                                    visualsFunction.showBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">");
-                                    String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
-                                    message = message.replace("%visualtype%", "Bottom Gradient");
+                            } else if (args[1].equalsIgnoreCase("bottom")) {
+                                if (args.length == 6) {
+                                    Player player = Bukkit.getPlayer(args[2]);
+                                    if (player != null) {
+                                        if (conf.getBoolean("General.Visuals.Gradients.Bottom")) {
+                                            visualsFunction.showBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500);
+                                            String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
+                                            message = message.replace("%visualtype%", "Bottom Gradient");
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%target%", player.getName());
+                                            message = message.replace("%title%", args[3]);
+                                            message = message.replace("%subtitle%", args[4]);
+                                            sender.sendMessage(Color.format(message));
+                                        } else {
+                                            String message = msg.getString("General.Errors.Visual_IsDisabled");
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%type%", "Bottom Gradient");
+                                            sender.sendMessage(Color.format(message));
+                                        }
+                                    } else {
+                                        String message = msg.getString("General.Errors.Player_Not_Found");
+                                        message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                        sender.sendMessage(Color.format(message));
+                                    }
+                                } else {
+                                    String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title_And_Subtitle");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                    message = message.replace("%target%", player.getName());
-                                    message = message.replace("%title%", args[3]);
-                                    message = message.replace("%subtitle%", args[4]);
-                                    sender.sendMessage(Color.format(message));
-                                }else {
-                                    String message = msg.getString("General.Errors.Visual_IsDisabled");
-                                    message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                    message = message.replace("%type%", "Bottom Gradient");
+                                    message = message.replace("%gradienttype%", "Bottom Gradient");
                                     sender.sendMessage(Color.format(message));
                                 }
-                            }else {
-                                String message = msg.getString("General.Errors.Player_Not_Found");
-                                message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                sender.sendMessage(Color.format(message));
-                            }
-                        }else {
-                            String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title_And_Subtitle");
-                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                            message = message.replace("%gradienttype%", "Bottom Gradient");
-                            sender.sendMessage(Color.format(message));
-                        }
-                    }else if (args[1].equalsIgnoreCase("top")){
-                        if (args.length == 6){
-                            Player player = Bukkit.getPlayer(args[2]);
-                            if (player != null){
-                                if (conf.getBoolean("General.Visuals.Gradients.Top")){
-                                    visualsFunction.showTopGradientVisual(player, args[3], args[4], "<" + args[5] + ">");
-                                    String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
-                                    message = message.replace("%visualtype%", "Top Gradient");
-                                    message = message.replace("%target%", player.getName());
+                            } else if (args[1].equalsIgnoreCase("top")) {
+                                if (args.length == 6) {
+                                    Player player = Bukkit.getPlayer(args[2]);
+                                    if (player != null) {
+                                        if (conf.getBoolean("General.Visuals.Gradients.Top")) {
+                                            visualsFunction.showTopGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500);
+                                            String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
+                                            message = message.replace("%visualtype%", "Top Gradient");
+                                            message = message.replace("%target%", player.getName());
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%title%", args[3]);
+                                            message = message.replace("%subtitle%", args[4]);
+                                            sender.sendMessage(Color.format(message));
+                                        } else {
+                                            String message = msg.getString("General.Errors.Visual_IsDisabled");
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%type%", "Top Gradient");
+                                            sender.sendMessage(Color.format(message));
+                                        }
+                                    } else {
+                                        String message = msg.getString("General.Errors.Player_Not_Found");
+                                        message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                        sender.sendMessage(Color.format(message));
+                                    }
+                                } else {
+                                    String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title_And_Subtitle");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                    message = message.replace("%title%", args[3]);
-                                    message = message.replace("%subtitle%", args[4]);
-                                    sender.sendMessage(Color.format(message));
-                                }else {
-                                    String message = msg.getString("General.Errors.Visual_IsDisabled");
-                                    message =  message.replace("%prefix%", msg.getString("General.Prefix"));
-                                    message = message.replace("%type%", "Top Gradient");
+                                    message = message.replace("%gradienttype%", "Top Gradient");
                                     sender.sendMessage(Color.format(message));
                                 }
-                            }else {
-                                String message = msg.getString("General.Errors.Player_Not_Found");
-                                message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                sender.sendMessage(Color.format(message));
+                            } else if (args[1].equalsIgnoreCase("topandbottom")) {
+                                if (args.length == 6) {
+                                    Player player = Bukkit.getPlayer(args[2]);
+                                    if (player != null) {
+                                        if (conf.getBoolean("General.Visuals.Gradients.TopAndBottom")) {
+                                            visualsFunction.showTopAndBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500);
+                                            String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
+                                            message = message.replace("%visualtype%", "Top & Bottom Gradient");
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%target%", player.getName());
+                                            message = message.replace("%title%", args[3]);
+                                            message = message.replace("%subtitle%", args[4]);
+                                            sender.sendMessage(Color.format(message));
+                                        } else {
+                                            String message = msg.getString("General.Errors.Visual_IsDisabled");
+                                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                            message = message.replace("%type%", "Top & Bottom Gradient");
+                                            sender.sendMessage(Color.format(message));
+                                        }
+                                    } else {
+                                        String message = msg.getString("General.Errors.Player_Not_Found");
+                                        message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                        sender.sendMessage(Color.format(message));
+                                    }
+                                } else {
+                                    String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title_And_Subtitle");
+                                    message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                    message = message.replace("%gradienttype%", "Top & Bottom Gradient");
+                                    sender.sendMessage(Color.format(message));
+                                }
                             }
-                        }else {
-                            String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title_And_Subtitle");
-                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                            message = message.replace("%gradienttype%", "Top Gradient");
-                            sender.sendMessage(Color.format(message));
                         }
-                    }else if (args[1].equalsIgnoreCase("topandbottom")){
-                        if (args.length == 6) {
-                            Player player = Bukkit.getPlayer(args[2]);
+                    }else if (args[0].equalsIgnoreCase("fullscreen")) {
+                        if (args.length == 4) {
+                            Player player = Bukkit.getPlayer(args[1]);
                             if (player != null) {
-                                if (conf.getBoolean("General.Visuals.Gradients.TopAndBottom")) {
-                                    visualsFunction.showTopAndBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">");
-                                    String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
-                                    message = message.replace("%visualtype%", "Top & Bottom Gradient");
+                                if (conf.getBoolean("General.Visuals.Fullscreen")) {
+                                    visualsFunction.showFullScreenVisual(player, args[2], "<" + args[3] + ">", 500, 1760, 500);
+                                    String message = msg.getString("General.Visual_Was_Sent.With_Title");
+                                    message = message.replace("%visualtype%", "Fullscreen");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));
                                     message = message.replace("%target%", player.getName());
-                                    message = message.replace("%title%", args[3]);
-                                    message = message.replace("%subtitle%", args[4]);
+                                    message = message.replace("%text%", args[2]);
                                     sender.sendMessage(Color.format(message));
                                 }else {
                                     String message = msg.getString("General.Errors.Visual_IsDisabled");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                    message = message.replace("%type%", "Top & Bottom Gradient");
+                                    message = message.replace("%type%", "Fullscreen");
                                     sender.sendMessage(Color.format(message));
                                 }
                             } else {
@@ -146,72 +183,70 @@ public class ShowVisual implements TabExecutor {
                                 sender.sendMessage(Color.format(message));
                             }
                         } else {
-                            String message = msg.getString("General.Errors.Wrong_Usage.Gradient.With_Title_And_Subtitle");
+                            String message = msg.getString("General.Errors.Wrong_Usage.Others");
                             message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                            message = message.replace("%gradienttype%", "Top & Bottom Gradient");
+                            message = message.replace("%type%", "Fullscreen");
                             sender.sendMessage(Color.format(message));
                         }
-                    }
-                }else if (args[0].equalsIgnoreCase("fullscreen")) {
-                    if (args.length == 4) {
-                        Player player = Bukkit.getPlayer(args[1]);
-                        if (player != null) {
-                            if (conf.getBoolean("General.Visuals.Fullscreen")) {
-                                visualsFunction.showFullScreenVisual(player, args[2], "<" + args[3] + ">");
-                                String message = msg.getString("General.Visual_Was_Sent.With_Title");
-                                message = message.replace("%visualtype%", "Fullscreen");
+                    } else if (args[0].equalsIgnoreCase("transparent")) {
+                        if (args.length == 4) {
+                            Player player = Bukkit.getPlayer(args[1]);
+                            if (player != null) {
+                                if (conf.getBoolean("General.Visuals.Transparent")) {
+                                    VisualsFunction.showTransparentVisual(player, args[2], "<" + args[3] + ">", 500, 1760, 500);
+                                    String message = msg.getString("General.Visual_Was_Sent.With_Title");
+                                    message = message.replace("%visualtype%", "Transparent");
+                                    message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                    message = message.replace("%target%", player.getName());
+                                    message = message.replace("%text%", args[2]);
+                                    sender.sendMessage(Color.format(message));
+                                } else {
+                                    String message = msg.getString("General.Errors.Visual_IsDisabled");
+                                    message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                    message = message.replace("%type%", "Transparent");
+                                    sender.sendMessage(Color.format(message));
+                                }
+                            } else {
+                                String message = msg.getString("General.Errors.Player_Not_Found");
                                 message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                message = message.replace("%target%", player.getName());
-                                message = message.replace("%text%", args[2]);
-                                sender.sendMessage(Color.format(message));
-                            }else {
-                                String message = msg.getString("General.Errors.Visual_IsDisabled");
-                                message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                message = message.replace("%type%", "Fullscreen");
                                 sender.sendMessage(Color.format(message));
                             }
                         } else {
-                            String message = msg.getString("General.Errors.Player_Not_Found");
+                            String message = msg.getString("General.Errors.Wrong_Usage.Others");
                             message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                            message = message.replace("%type%", "Transparent");
                             sender.sendMessage(Color.format(message));
                         }
-                    } else {
-                        String message = msg.getString("General.Errors.Wrong_Usage.Others");
-                        message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                        message = message.replace("%type%", "Fullscreen");
-                        sender.sendMessage(Color.format(message));
-                    }
-                } else if (args[0].equalsIgnoreCase("transparent")){
-                    if (args.length == 4){
-                        Player player = Bukkit.getPlayer(args[1]);
-                        if (player != null){
-                            if (conf.getBoolean("General.Visuals.Transparent")){
-                                VisualsFunction.showTransparentVisual(player, args[2], "<" + args[3] + ">");
-                                String message = msg.getString("General.Visual_Was_Sent.With_Title");
-                                message = message.replace("%visualtype%", "Transparent");
-                                message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                message = message.replace("%target%", player.getName());
-                                message = message.replace("%text%", args[2]);
-                                sender.sendMessage(Color.format(message));
+                    } else if (args[0].equalsIgnoreCase("freezing")){
+                        if (args.length == 4){
+                            Player player = Bukkit.getPlayer(args[1]);
+                            if (player != null){
+                                if (conf.getBoolean("General.Visuals.Freezing")){
+                                    VisualsFunction.showFrezzingVisual(player, args[2], args[3], 500, 1760, 500);
+                                    String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
+                                    message = message.replace("%visualtype%", "Freezing");
+                                    message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                    message = message.replace("%target%", player.getName());
+                                    message = message.replace("%title%", args[2]);
+                                    message = message.replace("%subtitle%", args[3]);
+                                    sender.sendMessage(Color.format(message));
+                                }else {
+                                    String message = msg.getString("General.Errors.Visual_IsDisabled");
+                                    message = message.replace("%prefix%", msg.getString("General.Prefix"));
+                                    message = message.replace("%type%", "Freezing");
+                                    sender.sendMessage(Color.format(message));
+                                }
                             }else {
-                                String message = msg.getString("General.Errors.Visual_IsDisabled");
+                                String message = msg.getString("General.Errors.Player_Not_Found");
                                 message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                                message = message.replace("%type%", "Transparent");
                                 sender.sendMessage(Color.format(message));
                             }
-                        } else {
-                            String message = msg.getString("General.Errors.Player_Not_Found");
-                            message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                            sender.sendMessage(Color.format(message));
+                        }else {
+                            sender.sendMessage(Color.format("<red>Wrong Usage!"));
                         }
-                    } else {
-                        String message = msg.getString("General.Errors.Wrong_Usage.Others");
-                        message = message.replace("%prefix%", msg.getString("General.Prefix"));
-                        message = message.replace("%type%", "Transparent");
-                        sender.sendMessage(Color.format(message));
+                    }else {
+                        sender.sendMessage(Color.format("<red>Wrong Usage!"));
                     }
-                }else {
-                    sender.sendMessage(Color.format("<red>Wrong Usage!"));
                 }
             }
         }
@@ -222,7 +257,7 @@ public class ShowVisual implements TabExecutor {
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String s, @NotNull String[] args) {
         if (cmd.getName().equalsIgnoreCase("visual")){
             if (args.length == 1){
-                return List.of("fullscreen", "gradient", "transparent");
+                return List.of("fullscreen", "gradient", "transparent", "freezing");
             }else if (args.length == 2){
                 if (args[0].equalsIgnoreCase("gradient")){
                     return List.of("fullscreen", "bottom", "top", "topandbottom");
@@ -247,12 +282,16 @@ public class ShowVisual implements TabExecutor {
                 if (args[0].equalsIgnoreCase("gradient")) {
                     return List.of("title_text");
                 }else {
-                    List<String> colors = new java.util.ArrayList<>();
-                    colors.add("#000000");
-                    colors.add("#ff0000");
-                    colors.add("black");
-                    colors.add("white");
-                    return colors;
+                    if (!args[0].equalsIgnoreCase("freezing")) {
+                        List<String> colors = new java.util.ArrayList<>();
+                        colors.add("#000000");
+                        colors.add("#ff0000");
+                        colors.add("black");
+                        colors.add("white");
+                        return colors;
+                    }else {
+                        return List.of("subtitle_text");
+                    }
                 }
             }else if (args.length == 5){
                 if (args[0].equalsIgnoreCase("gradient")) {

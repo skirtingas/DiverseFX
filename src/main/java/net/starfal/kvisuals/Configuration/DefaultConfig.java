@@ -23,6 +23,7 @@ public class DefaultConfig {
         ConfigManager.getConfig().addDefault("General.Language", "en");
         ConfigManager.getConfig().addDefault("General.Visuals.Fullscreen", true);
         ConfigManager.getConfig().addDefault("General.Visuals.Transparent", true);
+        ConfigManager.getConfig().addDefault("General.Visuals.Freezing", true);
         ConfigManager.getConfig().addDefault("General.Visuals.Gradients.Fullscreen", true);
         ConfigManager.getConfig().addDefault("General.Visuals.Gradients.Bottom", true);
         ConfigManager.getConfig().addDefault("General.Visuals.Gradients.Top", true);

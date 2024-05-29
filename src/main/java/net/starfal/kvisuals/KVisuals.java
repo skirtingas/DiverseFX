@@ -8,6 +8,7 @@ import net.starfal.kvisuals.Configuration.ConfigManager;
 import net.starfal.kvisuals.Configuration.DefaultConfig;
 import net.starfal.kvisuals.Configuration.kVisualsCMD;
 import net.starfal.kvisuals.Functions.Color;
+import net.starfal.kvisuals.Functions.UpdateChecker;
 import net.starfal.kvisuals.OraxenFileSetup.DefaultFile;
 import net.starfal.kvisuals.OraxenFileSetup.FileSetup;
 import net.starfal.kvisuals.Visual.ShowVisual;
@@ -77,7 +78,8 @@ public final class KVisuals extends JavaPlugin {
     public void enableMessages() {
         String enabled = "<green>(Eɴᴀʙʟᴇᴅ)</green>";
         String disabled = "<red>(Dɪsᴀʙʟᴇᴅ)</red>";
-        log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray> <#0ffcb9><b><u>Eɴᴀʙʟᴇᴅ</u></b></#0ffcb9>");
+        log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray> <#0ffcb9><b><u>Eɴᴀʙʟᴇᴅ</u></b></#0ffcb9> <gray>(V" + this.getDescription().getVersion() + ")</gray>");
+        checkForUpdates();
         log("<gradient:#d3b013:#e2d185><i>Vɪsᴜᴀʟs Lɪsᴛ:</i></gradient>");
         if (ConfigManager.getConfig().getBoolean("General.Visuals.Fullscreen")) {
             log("<gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + enabled);
@@ -88,6 +90,11 @@ public final class KVisuals extends JavaPlugin {
             log("<gradient:#0b9384:#13f4da>Tʀᴀɴsᴘᴀʀᴇɴᴛ</gradient>" + enabled);
         } else {
             log("<gradient:#0b9384:#13f4da>Tʀᴀɴsᴘᴀʀᴇɴᴛ</gradient>" + disabled);
+        }
+        if (ConfigManager.getConfig().getBoolean("General.Visuals.Freezing")) {
+            log("<gradient:#0b9384:#13f4da>Fʀᴇᴇᴢɪɴɢ</gradient>" + enabled);
+        } else {
+            log("<gradient:#0b9384:#13f4da>Fʀᴇᴇᴢɪɴɢ</gradient>" + disabled);
         }
         log("<gradient:#ff0000:#bc13f4>Gʀᴀᴅɪᴇɴᴛs:</gradient>");
         if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.Fullscreen")) {
@@ -115,6 +122,17 @@ public final class KVisuals extends JavaPlugin {
     }
     public void disableMessages() {
         log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray> <#f4132d><b><u>Dɪsᴀʙʟᴇᴅ</u></b></#f4132d>");
+    }
+    public void checkForUpdates(){
+        new UpdateChecker(this, 117013).getVersion(version -> {
+            if (this.getDescription().getVersion().equals(version)) {
+                log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray><green> You are using the latest version of kVisuals.</green>");
+            } else {
+                log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray><red> There is a new update available.");
+                log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray><red> Your version: " + this.getDescription().getVersion());
+                log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray><red> New version: " + version);
+            }
+        });
     }
     public void copyFilesToOraxen() {
         // Gradient.png
