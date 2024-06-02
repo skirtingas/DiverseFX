@@ -3,6 +3,7 @@ package net.starfal.kvisuals.Visual;
 import net.starfal.kvisuals.Configuration.ConfigManager;
 import net.starfal.kvisuals.Functions.Color;
 import net.starfal.kvisuals.KVisuals;
+import net.starfal.kvisuals.OraxenFileSetup.FileSetup;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -44,7 +45,8 @@ public class ShowVisual implements TabExecutor {
                                     Player player = Bukkit.getPlayer(args[2]);
                                     if (player != null) {
                                         if (conf.getBoolean("General.Visuals.Gradients.Fullscreen")) {
-                                            VisualsFunction.showFullScreenGradientVisual(player, args[3], "<" + args[4] + ">", 500, 1760, 500);
+                                            String titleChar = FileSetup.getConfig().getString("fullscreengradient.char");
+                                            visualsFunction.showFullScreenGradientVisual(player, args[3], "<" + args[4] + ">", 500, 1760, 500, titleChar);
                                             String message = msg.getString("General.Visual_Was_Sent.With_Title");
                                             message = message.replace("%visualtype%", "Fullscreen Gradient");
                                             message = message.replace("%target%", player.getName());
@@ -72,7 +74,8 @@ public class ShowVisual implements TabExecutor {
                                     Player player = Bukkit.getPlayer(args[2]);
                                     if (player != null) {
                                         if (conf.getBoolean("General.Visuals.Gradients.Bottom")) {
-                                            visualsFunction.showBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500);
+                                            String titleChar = FileSetup.getConfig().getString("bottomgradient.char");
+                                            visualsFunction.showBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500, titleChar);
                                             String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
                                             message = message.replace("%visualtype%", "Bottom Gradient");
                                             message = message.replace("%prefix%", msg.getString("General.Prefix"));
@@ -102,7 +105,8 @@ public class ShowVisual implements TabExecutor {
                                     Player player = Bukkit.getPlayer(args[2]);
                                     if (player != null) {
                                         if (conf.getBoolean("General.Visuals.Gradients.Top")) {
-                                            visualsFunction.showTopGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500);
+                                            String titleChar = FileSetup.getConfig().getString("topgradient.char");
+                                            visualsFunction.showTopGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500, titleChar);
                                             String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
                                             message = message.replace("%visualtype%", "Top Gradient");
                                             message = message.replace("%target%", player.getName());
@@ -132,7 +136,9 @@ public class ShowVisual implements TabExecutor {
                                     Player player = Bukkit.getPlayer(args[2]);
                                     if (player != null) {
                                         if (conf.getBoolean("General.Visuals.Gradients.TopAndBottom")) {
-                                            visualsFunction.showTopAndBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500);
+                                            String bottomChar = FileSetup.getConfig().getString("bottomgradient.char");
+                                            String topChar = FileSetup.getConfig().getString("topgradient.char");
+                                            visualsFunction.showTopAndBottomGradientVisual(player, args[3], args[4], "<" + args[5] + ">", 500, 1760, 500, topChar, bottomChar);
                                             String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
                                             message = message.replace("%visualtype%", "Top & Bottom Gradient");
                                             message = message.replace("%prefix%", msg.getString("General.Prefix"));
@@ -164,7 +170,8 @@ public class ShowVisual implements TabExecutor {
                             Player player = Bukkit.getPlayer(args[1]);
                             if (player != null) {
                                 if (conf.getBoolean("General.Visuals.Fullscreen")) {
-                                    visualsFunction.showFullScreenVisual(player, args[2], "<" + args[3] + ">", 500, 1760, 500);
+                                    String titleChar = FileSetup.getConfig().getString("fullscreen.char");
+                                    visualsFunction.showFullScreenVisual(player, args[2], "<" + args[3] + ">", 500, 1760, 500, titleChar);
                                     String message = msg.getString("General.Visual_Was_Sent.With_Title");
                                     message = message.replace("%visualtype%", "Fullscreen");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));
@@ -193,7 +200,8 @@ public class ShowVisual implements TabExecutor {
                             Player player = Bukkit.getPlayer(args[1]);
                             if (player != null) {
                                 if (conf.getBoolean("General.Visuals.Transparent")) {
-                                    VisualsFunction.showTransparentVisual(player, args[2], "<" + args[3] + ">", 500, 1760, 500);
+                                    String titleChar = FileSetup.getConfig().getString("transparent.char");
+                                    visualsFunction.showTransparentVisual(player, args[2], "<" + args[3] + ">", 500, 1760, 500, titleChar);
                                     String message = msg.getString("General.Visual_Was_Sent.With_Title");
                                     message = message.replace("%visualtype%", "Transparent");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));
@@ -222,7 +230,7 @@ public class ShowVisual implements TabExecutor {
                             Player player = Bukkit.getPlayer(args[1]);
                             if (player != null){
                                 if (conf.getBoolean("General.Visuals.Freezing")){
-                                    VisualsFunction.showFrezzingVisual(player, args[2], args[3], 500, 1760, 500);
+                                    visualsFunction.showFrezzingVisual(player, args[2], args[3], 500, 1760, 500);
                                     String message = msg.getString("General.Visual_Was_Sent.With_Title_And_Subtitle");
                                     message = message.replace("%visualtype%", "Freezing");
                                     message = message.replace("%prefix%", msg.getString("General.Prefix"));

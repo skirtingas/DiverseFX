@@ -6,7 +6,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.Title;
 import net.starfal.kvisuals.Functions.Color;
 import net.starfal.kvisuals.KVisuals;
-import net.starfal.kvisuals.OraxenFileSetup.FileSetup;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -20,31 +19,31 @@ public class VisualsFunction {
         this.plugin = plugin;
     }
 
-    public static void showFullScreenVisual(Player p, String text, String color, int fadeIn, int stay, int fadeOut){
-        String titleChar = FileSetup.getConfig().getString("fullscreen.char");
+    public void showFullScreenVisual(Player p, String text, String color, int fadeIn, int stay, int fadeOut, String titleChar){
+        // String titleChar = FileSetup.getConfig().getString("fullscreen.char");
         text = text.replace("+", " ");
         showCustomTitle(p, text, color + titleChar, fadeIn, stay, fadeOut);
     }
-    public static void showTransparentVisual(Player p, String text, String color, int fadeIn, int stay, int fadeOut){
-        String titleChar = FileSetup.getConfig().getString("transparent.char");
+    public void showTransparentVisual(Player p, String text, String color, int fadeIn, int stay, int fadeOut, String titleChar){
+        // String titleChar = FileSetup.getConfig().getString("transparent.char");
         text = text.replace("+", " ");
         showCustomTitle(p, text, color + titleChar, fadeIn, stay, fadeOut);
     }
-    public static void showFullScreenGradientVisual(Player p, String text, String color, int fadeIn, int stay, int fadeOut){
-        String titleChar = FileSetup.getConfig().getString("fullscreengradient.char");
+    public void showFullScreenGradientVisual(Player p, String text, String color, int fadeIn, int stay, int fadeOut, String titleChar){
+        // String titleChar = FileSetup.getConfig().getString("fullscreengradient.char");
         text = text.replace("+", " ");
         showCustomTitle(p, text, color + titleChar, fadeIn, stay, fadeOut);
     }
-    public static void showBottomGradientVisual(Player p, String title, String subtitle, String color, int fadeIn, int stay, int fadeOut){
-        String titleChar = FileSetup.getConfig().getString("bottomgradient.char");
+    public void showBottomGradientVisual(Player p, String title, String subtitle, String color, int fadeIn, int stay, int fadeOut, String titleChar){
+        // String titleChar = FileSetup.getConfig().getString("bottomgradient.char");
         title = title.replace("+", " ");
         subtitle = subtitle.replace("+", " ");
         showCustomTitle(p, title, subtitle, fadeIn, stay, fadeOut);
 
         p.sendActionBar(Component.text(Color.format(color + titleChar)));
     }
-    public void showTopGradientVisual(Player p, String title, String subtitle, String color, int fadeIn, int stay, int fadeOut){
-        String titleChar = FileSetup.getConfig().getString("topgradient.char");
+    public void showTopGradientVisual(Player p, String title, String subtitle, String color, int fadeIn, int stay, int fadeOut, String titleChar){
+        // String titleChar = FileSetup.getConfig().getString("topgradient.char");
         title = title.replace("+", " ");
         subtitle = subtitle.replace("+", " ");
         showCustomTitle(p, title, subtitle, fadeIn, stay, fadeOut);
@@ -58,9 +57,9 @@ public class VisualsFunction {
             }
         }.runTaskLater(plugin, (fadeIn + stay + fadeOut) / 50);
     }
-    public void showTopAndBottomGradientVisual(Player p, String title, String subtitle, String color, int fadeIn, int stay, int fadeOut){
-        String bottomChar = FileSetup.getConfig().getString("bottomgradient.char");
-        String topChar = FileSetup.getConfig().getString("topgradient.char");
+    public void showTopAndBottomGradientVisual(Player p, String title, String subtitle, String color, int fadeIn, int stay, int fadeOut, String topChar, String bottomChar){
+        // String bottomChar = FileSetup.getConfig().getString("bottomgradient.char");
+        // String topChar = FileSetup.getConfig().getString("topgradient.char");
         title = title.replace("+", " ");
         subtitle = subtitle.replace("+", " ");
         showCustomTitle(p, title, subtitle, fadeIn, stay, fadeOut);
@@ -76,14 +75,14 @@ public class VisualsFunction {
             }
         }.runTaskLater(plugin, 56);
     }
-    public static void showFrezzingVisual(Player p, String title, String subtitle, int fadeIn, int stay, int fadeOut){
+    public void showFrezzingVisual(Player p, String title, String subtitle, int fadeIn, int stay, int fadeOut){
         title = title.replace("+", " ");
         subtitle = subtitle.replace("+", " ");
         p.setFreezeTicks((fadeIn + stay + fadeOut) / 50 * 2);
         showCustomTitle(p, title, subtitle, fadeIn, stay, fadeOut);
     }
 
-    public static void showCustomTitle(final @NonNull Audience target, final @NonNull String titleText, final @NonNull String subtitleText, final int fadeIn, final int stay, final int fadeOut) {
+    public void showCustomTitle(final @NonNull Audience target, final @NonNull String titleText, final @NonNull String subtitleText, final int fadeIn, final int stay, final int fadeOut) {
         final Component mainTitle = Component.text(Color.format(titleText));
         final Component subtitle = Component.text(Color.format(subtitleText));
 
