@@ -13,29 +13,27 @@ public class kVisualsCMD implements TabExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String s, @NotNull String[] args) {
         if (cmd.getName().equalsIgnoreCase("kvisuals")) {
-            var conf = ConfigManager.getConfig();
-            String lang = conf.getString("General.Language");
-            var msg = ConfigManager.getMessages(lang);
-            String prefix = msg.getString("General.Prefix");
+            var conf = ConfigManager.getInstance();
+            String prefix = (String) ConfigManager.getInstance().getLang("General.Prefix");
             if (sender.hasPermission(conf.getString("Permissions.General.Admin"))) {
                 if (!(args.length == 0)){
                     if (args[0].equalsIgnoreCase("reload")){
-                        ConfigManager.reloadConfig();
-                        String message = msg.getString("General.Reloaded");
+                        ConfigManager.getInstance().reload();
+                        String message = (String) ConfigManager.getInstance().getLang("General.Reloaded");
                         message = message.replace("%prefix%", prefix);
                         sender.sendMessage(Color.format(message));
                     }else {
-                        String message = msg.getString("General.Errors.Wrong_Usage_AdminCMD");
+                        String message = (String) ConfigManager.getInstance().getLang("General.Errors.Wrong_Usage_AdminCMD");
                         message = message.replace("%prefix%", prefix);
                         sender.sendMessage(Color.format(message));
                     }
                 }else {
-                    String message = msg.getString("General.Errors.Wrong_Usage_AdminCMD");
+                    String message = (String) ConfigManager.getInstance().getLang("General.Errors.Wrong_Usage_AdminCMD");
                     message = message.replace("%prefix%", prefix);
                     sender.sendMessage(Color.format(message));
                 }
             }else{
-                String message = msg.getString("General.Errors.No_Permission");
+                String message = (String) ConfigManager.getInstance().getLang("General.Errors.No_Permission");
                 message = message.replace("%prefix%", prefix);
                 sender.sendMessage(Color.format(message));
             }

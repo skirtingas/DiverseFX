@@ -2,10 +2,8 @@ package net.starfal.kvisuals;
 
 import io.th0rgal.oraxen.api.OraxenPack;
 import io.th0rgal.oraxen.utils.AdventureUtils;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.starfal.kvisuals.Configuration.ConfigManager;
-import net.starfal.kvisuals.Configuration.DefaultConfig;
 import net.starfal.kvisuals.Configuration.kVisualsCMD;
 import net.starfal.kvisuals.Functions.Color;
 import net.starfal.kvisuals.Functions.UpdateChecker;
@@ -13,7 +11,6 @@ import net.starfal.kvisuals.OraxenFileSetup.DefaultFile;
 import net.starfal.kvisuals.OraxenFileSetup.FileSetup;
 import net.starfal.kvisuals.Visual.ShowVisual;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,6 +26,10 @@ public final class KVisuals extends JavaPlugin {
     private static KVisuals instance;
     private BukkitAudiences audience;
 
+    public static KVisuals getInstance(){
+        return instance;
+    }
+
     @Override
     public void onEnable() {
         instance = this;
@@ -37,7 +38,7 @@ public final class KVisuals extends JavaPlugin {
         Plugin otherPlugin = pluginManager.getPlugin("Oraxen");
 
         if (otherPlugin == null) {
-            switch (ConfigManager.getConfig().getString("General.Language")) {
+            switch (ConfigManager.getInstance().getString("General.Language")) {
                 case "en":
                     getLogger().severe(Color.format("<gradient:dark_purple:#8e04dd>kVisuals</gradient> <red>- <u>Oraxen</u> is required for <u>kVisuals</u> to work. Disabling plugin."));
                     break;
@@ -51,9 +52,7 @@ public final class KVisuals extends JavaPlugin {
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
         }
-        ConfigManager.setupConfig();
-        DefaultConfig.setupConfig();
-        DefaultConfig.setupMessages();
+        ConfigManager.getInstance().load();
         FileSetup.createFileInOraxen("/glyphs/visuals.yml");
         DefaultFile.setupFile();
         copyFilesToOraxen();
@@ -81,38 +80,38 @@ public final class KVisuals extends JavaPlugin {
         log("<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient> <gray>|</gray> <#0ffcb9><b><u>Eɴᴀʙʟᴇᴅ</u></b></#0ffcb9> <gray>(V" + this.getDescription().getVersion() + ")</gray>");
         checkForUpdates();
         log("<gradient:#d3b013:#e2d185><i>Vɪsᴜᴀʟs Lɪsᴛ:</i></gradient>");
-        if (ConfigManager.getConfig().getBoolean("General.Visuals.Fullscreen")) {
+        if (ConfigManager.getInstance().getBoolean("General.Visuals.Fullscreen")) {
             log("<gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + enabled);
         } else {
             log("<gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + disabled);
         }
-        if (ConfigManager.getConfig().getBoolean("General.Visuals.Transparent")) {
+        if (ConfigManager.getInstance().getBoolean("General.Visuals.Transparent")) {
             log("<gradient:#0b9384:#13f4da>Tʀᴀɴsᴘᴀʀᴇɴᴛ</gradient>" + enabled);
         } else {
             log("<gradient:#0b9384:#13f4da>Tʀᴀɴsᴘᴀʀᴇɴᴛ</gradient>" + disabled);
         }
-        if (ConfigManager.getConfig().getBoolean("General.Visuals.Freezing")) {
+        if (ConfigManager.getInstance().getBoolean("General.Visuals.Freezing")) {
             log("<gradient:#0b9384:#13f4da>Fʀᴇᴇᴢɪɴɢ</gradient>" + enabled);
         } else {
             log("<gradient:#0b9384:#13f4da>Fʀᴇᴇᴢɪɴɢ</gradient>" + disabled);
         }
         log("<gradient:#ff0000:#bc13f4>Gʀᴀᴅɪᴇɴᴛs:</gradient>");
-        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.Fullscreen")) {
+        if (ConfigManager.getInstance().getBoolean("General.Visuals.Gradients.Fullscreen")) {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + enabled);
         } else {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Fᴜʟʟsᴄʀᴇᴇɴ</gradient>" + disabled);
         }
-        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.Top")) {
+        if (ConfigManager.getInstance().getBoolean("General.Visuals.Gradients.Top")) {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ</gradient>" + enabled);
         } else {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ</gradient>" + disabled);
         }
-        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.Bottom")) {
+        if (ConfigManager.getInstance().getBoolean("General.Visuals.Gradients.Bottom")) {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Bᴏᴛᴛᴏᴍ</gradient>" + enabled);
         } else {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Bᴏᴛᴛᴏᴍ</gradient>" + disabled);
         }
-        if (ConfigManager.getConfig().getBoolean("General.Visuals.Gradients.TopAndBottom")) {
+        if (ConfigManager.getInstance().getBoolean("General.Visuals.Gradients.TopAndBottom")) {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ & Bᴏᴛᴛᴏᴍ</gradient>" + enabled);
         } else {
             log("<aqua>-</aqua> <gradient:#0b9384:#13f4da>Tᴏᴘ & Bᴏᴛᴛᴏᴍ</gradient>" + disabled);

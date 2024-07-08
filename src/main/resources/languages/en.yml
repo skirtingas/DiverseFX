@@ -1,0 +1,58 @@
+#####################################################
+#
+# Welcome to the english translation!
+# You can edit the colors, formatting and the whole sentences here.
+# You should use only miniMessage format which you can find at https://docs.advntr.dev/minimessage/format.html!
+#
+#####################################################"
+
+General:
+  Prefix: '<gradient:#c466b7:#770868>ᴋVɪsᴜᴀʟs</gradient>' # The Prefix for the messages
+  Reloaded: '%prefix% <gray>| <green>Reloaded!' # The message for when a player reloads the configuration
+  Visual_Was_Sent:
+    # The visual was sent message for the player who sent the visual."
+    # This is for: fullscreen, transparent and the fullscreen gradient."
+    # Placeholders:"
+    # %visualtype% - The type of visual that was sent(e. g. Transparent)"
+    # %target% - The targetted player"
+    # %text% - The text that was sent to that player"
+    # %prefix% - The prefix"
+    With_Title: '%prefix% <green>%visualtype% visual sent to <u>%target%</u> with text: %text%'
+    # The visual was sent message for the player who sent the visual."
+    # This is for: all gradients except the fullscreen gradient."
+    # Placeholders:"
+    # %visualtype% - The type of visual that was sent(e. g. Transparent)"
+    # %target% - The targetted player"
+    # %title% - The title text that was sent to that player"
+    # %subtitle% - The subtitle text that was sent to that player"
+    # %prefix% - The prefix"
+    With_Title_And_Subtitle: '%prefix% <green>%visualtype% visual sent to <u>%target%</u> with text: %title% and subtext: %subtitle%'
+  Errors:
+    Player_Not_Found: '%prefix% <red>Player not found'
+    Wrong_Usage:
+      Gradient:
+        # The message sent when someone uses /visual with the incorrect arguments for the gradient which uses only titles. (Only fullscreen)"
+        # Placeholders:"
+        # %prefix% - the prefix"
+        With_Title: '%prefix% <red>Usage: /visual gradient fullscreen <player> <title_text> <color>'
+        # The message sent when someone uses /visual with the incorrect arguments for the gradient which uses titles with subtitles. (Every one, except fullscreen)"
+        # Placeholders:"
+        # %gradienttype% - the gradient type which was used(e. g. TopAndBottom)"
+        # %prefix% - the prefix"
+        With_Title_And_Subtitle: '%prefix% <red>Usage: /visual gradient %gradienttype% <player> <title_text> <subtitle_text> <color>'
+      # The message sent when someone uses /visual with the incorrect arguments for the visual like fullscreen or transparent."
+      # Placeholders:"
+      # %type% - the type of visual which was used(e. g. Transparent)"
+      # %prefix% - the prefix"
+      Others: '%prefix% <red>Usage: /visual %type% <player> <title_text> <color>'
+    # The message sent to the player when they try to use a visual, that is disabled.
+    # Placeholders:
+    # %prefix% - the prefix
+    # %type% - the type of the visual(E.g. Fullscreen or Fullscreen Gradient
+    Visual_IsDisabled: '%prefix% <red>Visual %type% is disabled'
+    # The message sent when someone uses the admin command incorrectly
+    # Placeholders: %prefix% - the prefix
+    Wrong_Usage_AdminCMD: '%prefix% <red>Usage: /kvisuals reload'
+    # The message sent when someone uses a command, which they don't have the permission for
+    # Placeholders: %prefix% - the prefix
+    No_Permission: '%prefix% <red>You don''t have permission.'
