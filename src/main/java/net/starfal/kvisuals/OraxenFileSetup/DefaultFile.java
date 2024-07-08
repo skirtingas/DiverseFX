@@ -25,14 +25,14 @@ public class DefaultFile {
         FileSetup.getConfig().addDefault("fullscreengradient.chat.permission", "kvisuals.admin");
 
         FileSetup.getConfig().addDefault("bottomgradient.texture", "visuals/gradient.png");
-        FileSetup.getConfig().addDefault("bottomgradient.ascent", 128);
-        FileSetup.getConfig().addDefault("bottomgradient.height", 512);
+        FileSetup.getConfig().addDefault("bottomgradient.ascent", 200);
+        FileSetup.getConfig().addDefault("bottomgradient.height", 700);
         FileSetup.getConfig().addDefault("bottomgradient.chat.placeholders", Arrays.asList(":bottomgradient:"));
         FileSetup.getConfig().addDefault("bottomgradient.chat.permission", "kvisuals.admin");
 
         FileSetup.getConfig().addDefault("topgradient.texture", "visuals/topgradient.png");
         FileSetup.getConfig().addDefault("topgradient.ascent", 128);
-        FileSetup.getConfig().addDefault("topgradient.height", 512);
+        FileSetup.getConfig().addDefault("topgradient.height", 325);
         FileSetup.getConfig().addDefault("topgradient.chat.placeholders", Arrays.asList(":topgradient:"));
         FileSetup.getConfig().addDefault("topgradient.chat.permission", "kvisuals.admin");
 
