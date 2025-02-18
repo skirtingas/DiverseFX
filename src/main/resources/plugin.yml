@@ -1,0 +1,9 @@
+name: kVisuals
+version: '1.5'
+main: net.starfal.kVisuals
+api-version: '1.19'
+authors: [ kitoxis ]
+description: Display cool visuals easily
+website: wiki.starfal.net/kvisuals
+libraries:
+  - de.exlll:configlib-yaml:4.5.0

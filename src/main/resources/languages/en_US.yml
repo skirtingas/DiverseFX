@@ -1,0 +1,39 @@
+# kVisuals Language File
+# English (United States)
+# Added by kitoxis
+# YOU CAN USE MINIMESSAGE FORMATTING HERE. BUT ONLY MINIMESSAGE FORMATTING
+
+general:
+  prefix: "<gradient:#6200ff:#00fffb>[Visuals]</gradient>"
+  reloading: "%prefix% <yellow>Reloading plugin..."
+  reloaded: "%prefix% <green>Plugin reloaded in %time%ms!"
+  thisVisualIsDisabled: "%prefix% <red>This visual is disabled!"
+
+shownVisuals:
+  # Message sent to the player when the visual is shown to another player with/without timings
+  # Placeholders:
+  # - %prefix%: The plugin prefix
+  # - %target%: The player who sees the visual
+  # - %text%: The text of the visual
+  # - %fadeIn%: The fade in time of the visual
+  # - %stay%: The stay time of the visual
+  # - %fadeOut%: The fade out time of the visual
+  # Others:
+  # - %title%: The title of the visual
+  # - %subtitle%: The subtitle of the visual
+
+  # Fullscreen visual
+  fullscreen_no_timings: "%prefix% <green>Showing fullscreen visual to <u>%target%</u> with text <u>%text%</u>."
+  fullscreen_timings: "%prefix% <green>Showing fullscreen visual to <u>%target%</u> with text <u>%text%</u> for <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Transparent Visual
+  transparent_no_timings: "%prefix% <green>Showing transparent visual to <u>%target%</u> with text <u>%text%</u>."
+  transparent_timings: "%prefix% <green>Showing transparent visual to <u>%target%</u> with text <u>%text%</u> for <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Freezing Visual
+  freezing_no_timings: "%prefix% <green>Showing freezing visual to <u>%target%</u> with title <u>%title%</u> and subtitle <u>%subtitle%</u>."
+  freezing_timings: "%prefix% <green>Showing freezing visual to <u>%target%</u> with title <u>%title%</u> and subtitle <u>%subtitle%</u> for <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Fullscreen Gradient Visual
+  fullscreen_gradient_no_timings: "%prefix% <green>Showing fullscreen gradient visual to <u>%target%</u> with text <u>%text%</u>."
+  fullscreen_gradient_timings: "%prefix% <green>Showing fullscreen gradient visual to <u>%target%</u> with text <u>%text%</u> for <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Bottom Gradient Visual
+  bottom_gradient_no_timings: "%prefix% <green>Showing bottom gradient visual to <u>%target%</u> with title <u>%title%</u> and subtitle <u>%subtitle%</u>."
+  bottom_gradient_timings: "%prefix% <green>Showing bottom gradient visual to <u>%target%</u> with title <u>%title%</u> and subtitle <u>%subtitle%</u> for <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."

@@ -1,0 +1,39 @@
+# kVisuals Language File
+# Lithuanian (Lithuania)
+# Added by kitoxis
+# YOU CAN USE MINIMESSAGE laikui:MATTING HERE. BUT ONLY MINIMESSAGE laikui:MATTING
+
+general:
+  prefix: "<gradient:#6200ff:#00fffb>[Visuals]</gradient>"
+  reloading: "%prefix% <yellow>Papildinys perkraunamas..."
+  reloaded: "%prefix% <green>Papildinys buvo perkrautas per %time%ms!"
+  thisVisualIsDisabled: "%prefix% <red>Šis vizualas yra išjungtas!"
+
+shownVisuals:
+  # Message sent to the player when the visual is shown to another player with/without timings
+  # Placeholders:
+  # - %prefix%: The plugin prefix
+  # - %target%: The player who sees the visual
+  # - %text%: The text of the visual
+  # - %fadeIn%: The fade in time of the visual
+  # - %stay%: The stay time of the visual
+  # - %fadeOut%: The fade out time of the visual
+  # Others:
+  # - %title%: The title of the visual
+  # - %subtitle%: The subtitle of the visual
+
+  # Fullscreen visual
+  fullscreen_no_timings: "%prefix% <green>Rodomas fullscreen vizualas žaidėjui <u>%target%</u> su tekstu <u>%text%</u>."
+  fullscreen_timings: "%prefix% <green>Rodomas fullscreen vizualas žaidėjui <u>%target%</u> su tekstu <u>%text%</u> laikui: <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Transparent Visual
+  transparent_no_timings: "%prefix% <green>Rodomas transparent vizualas žaidėjui <u>%target%</u> su tekstu <u>%text%</u>."
+  transparent_timings: "%prefix% <green>Rodomas transparent vizualas žaidėjui <u>%target%</u> su tekstu <u>%text%</u> laikui: <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Freezing Visual
+  freezing_no_timings: "%prefix% <green>Rodomas freezing vizualas žaidėjui <u>%target%</u> su title <u>%title%</u> ir subtitle <u>%subtitle%</u>."
+  freezing_timings: "%prefix% <green>Rodomas freezing vizualas žaidėjui <u>%target%</u> su title <u>%title%</u> ir subtitle <u>%subtitle%</u> laikui: <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Fullscreen Gradient Visual
+  fullscreen_gradient_no_timings: "%prefix% <green>Rodomas fullscreen gradient vizualas žaidėjui <u>%target%</u> su tekstu <u>%text%</u>."
+  fullscreen_gradient_timings: "%prefix% <green>Rodomas fullscreen gradient vizualas žaidėjui <u>%target%</u> su tekstu <u>%text%</u> laikui: <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
+  # Bottom Gradient Visual
+  bottom_gradient_no_timings: "%prefix% <green>Rodomas bottom gradient vizualas žaidėjui <u>%target%</u> su title <u>%title%</u> ir subtitle <u>%subtitle%</u>."
+  bottom_gradient_timings: "%prefix% <green>Rodomas bottom gradient vizualas žaidėjui <u>%target%</u> su title <u>%title%</u> ir subtitle <u>%subtitle%</u> laikui: <u>%fadeIn%ms %stay%ms %fadeOut%ms</u>."
