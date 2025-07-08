@@ -1,4 +1,4 @@
-package net.starfal.funs
+package dev.skir.funs
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage

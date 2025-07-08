@@ -1,16 +1,16 @@
-package net.starfal.cmds
+package dev.skir.cmds
 
 import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.executors.CommandExecutor
-import net.starfal.config.Settings
-import net.starfal.config.languages.LM
-import net.starfal.funs.Color
+import dev.skir.config.Settings
+import dev.skir.config.languages.LM
+import dev.skir.funs.Color
 
-class kVisualsCMD {
+class DiverseCMD {
     companion object {
         fun register() {
-            CommandAPICommand(Settings.i().commands.kvisuals)
-                .withPermission(Settings.i().permissions.kvisuals_reload)
+            CommandAPICommand(Settings.i().commands.diversefx)
+                .withPermission(Settings.i().permissions.diversefx_reload)
                 .withSubcommand(CommandAPICommand("reload")
                     .executes(CommandExecutor { sender, _ ->
                         // Reloading

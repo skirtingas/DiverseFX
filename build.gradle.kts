@@ -5,8 +5,8 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "net.starfal"
-version = "1.5"
+group = "dev.skir"
+version = "1.6"
 
 repositories {
     mavenCentral()
@@ -20,12 +20,12 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
-    compileOnly("de.exlll:configlib-yaml:4.5.0")
+    compileOnly("de.exlll:configlib-yaml:4.6.1")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("dev.jorel:commandapi-bukkit-shade:9.7.0")
+    implementation("dev.jorel:commandapi-bukkit-shade:10.1.1")
 }
 tasks.withType<ShadowJar> {
-    relocate("dev.jorel.commandapi", "net.starfal.commandapi")
+    relocate("dev.jorel.commandapi", "dev.skir.commandapi")
 }
 
 val targetJavaVersion = 17

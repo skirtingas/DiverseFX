@@ -1,7 +1,7 @@
-package net.starfal.config.languages
+package dev.skir.config.languages
 
-import net.starfal.config.Settings
-import net.starfal.kVisuals
+import dev.skir.config.Settings
+import dev.skir.DiverseFX
 import java.io.File
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
@@ -10,7 +10,7 @@ class LM {
     companion object {
         var instance: LM? = null
 
-        val FOLDER: File = File(kVisuals.instance.dataFolder, "languages")
+        val FOLDER: File = File(DiverseFX.instance.dataFolder, "languages")
         val DEFAULT: String = "en_US"
 
 
@@ -49,10 +49,10 @@ class LM {
 
     fun loadDefault() {
         if (!File(FOLDER, "en_US.yml").exists()) {
-            kVisuals.instance.saveResource("languages/en_US.yml", false)
+            DiverseFX.instance.saveResource("languages/en_US.yml", false)
         }
         if (!File(FOLDER, "lt_LT.yml").exists()) {
-            kVisuals.instance.saveResource("languages/lt_LT.yml", false)
+            DiverseFX.instance.saveResource("languages/lt_LT.yml", false)
         }
     }
     fun getLocale(): Locale {

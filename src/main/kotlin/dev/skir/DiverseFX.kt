@@ -1,16 +1,17 @@
-package net.starfal
+package dev.skir
 
 import dev.jorel.commandapi.CommandAPI
 import dev.jorel.commandapi.CommandAPIBukkitConfig
-import net.starfal.cmds.Visual
-import net.starfal.cmds.kVisualsCMD
-import net.starfal.config.Settings
-import net.starfal.config.languages.LM
-import net.starfal.funs.Color
+import dev.skir.cmds.Visual
+import dev.skir.cmds.DiverseCMD
+import dev.skir.config.Settings
+import dev.skir.config.languages.LM
+import dev.skir.freezing.FreezeEvents
+import dev.skir.funs.Color
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
-class kVisuals : JavaPlugin() {
+class DiverseFX : JavaPlugin() {
 
     override fun onEnable() {
         instance = this
@@ -19,7 +20,7 @@ class kVisuals : JavaPlugin() {
         CommandAPI.onLoad(CommandAPIBukkitConfig(this))
         CommandAPI.onEnable()
         Visual.register()
-        kVisualsCMD.register()
+        DiverseCMD.register()
         log("<green>CommandAPI has been enabled.")
         log("<yellow>Loading settings...")
         Settings.i()
@@ -27,6 +28,9 @@ class kVisuals : JavaPlugin() {
         log("<yellow>Loading languages...")
         LM.i()
         log("<green>Languages have been loaded.")
+        log("<yellow>Loading events...")
+        Bukkit.getPluginManager().registerEvents(FreezeEvents(), this)
+        log("<green>Events have been loaded.")
         log("<green><b>Enabled.</b>")
     }
 
@@ -35,10 +39,9 @@ class kVisuals : JavaPlugin() {
         log("<red>Disabled.")
     }
     companion object {
-        lateinit var instance: kVisuals
+        lateinit var instance: DiverseFX
 
-        val prefix: String = "<gradient:#6200ff:#00fffb>[kVisuals]</gradient> "
-
+        val prefix: String = "<gradient:#6200ff:#00fffb>[DiverseFX]</gradient> "
 
         fun log(message: String) {
             Bukkit.getConsoleSender().sendMessage(Color.format(prefix + message))

@@ -1,8 +1,7 @@
-package net.starfal.config.languages
+package dev.skir.config.languages
 
 import de.exlll.configlib.Comment
 import de.exlll.configlib.Configuration
-import de.exlll.configlib.Serializer
 import de.exlll.configlib.YamlConfigurationProperties
 import de.exlll.configlib.YamlConfigurations
 import java.io.File
@@ -54,7 +53,7 @@ class Locale {
 
     companion object {
         private val CONFIG_HEADER = """
-            kVisuals Language File
+            DiverseFX Language File
             
             YOU CAN USE MINIMESSAGE FORMATTING HERE. BUT ONLY MINIMESSAGE FORMATTING.
             """.trimIndent()
